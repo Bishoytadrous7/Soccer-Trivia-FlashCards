@@ -51,7 +51,7 @@ GIF created with Kap
 [peek](https://github.com/phw/peek) for Linux. -->
 
 ## Notes
-
+Challenges:
 Ensuring the flip animation works properly on both sides of the card
 
 ## License
