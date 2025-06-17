@@ -1,8 +1,6 @@
 import './App.css';
 import {useState} from 'react';
 
-
-
 const flashcards = [
   {
     question: "Who won the 2022 FIFA World Cup?",
@@ -74,11 +72,6 @@ const flashcards = [
     category: "Hard"
   }
 ];
-const categoryColors = {
-  Easy: '#d4edda',
-  Medium: '#fff3cd',
-  Hard: '#f8d7da'
-};
 const App = () => {
   const [index, setIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -122,10 +115,7 @@ const App = () => {
       <p>Flip the card to test your soccer knowledge!</p>
       <p>Card {index + 1} of {flashcards.length}</p>
 
-      <div
-        className={`flip-card ${currentCard.category.toLowerCase()}`}
-        onClick={flipCard}
-      >
+     <div className={`flip-card ${currentCard.category}`} onClick={flipCard}>
         <div className={`flip-card-inner ${isFlipped ? 'flipped' : ''}`}>
           <div className="flip-card-front">
             {currentCard.image && <img src={currentCard.image} alt="Hint" className="card-img" />}
