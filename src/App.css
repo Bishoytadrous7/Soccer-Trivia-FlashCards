@@ -34,8 +34,8 @@ p {
 
 
 .flip-card {
-  width: 500px;
-  height: 300px;
+  width: 800px;
+  height: 380px;
   perspective: 1000px; 
 }
 .flip-card-inner {
@@ -102,3 +102,27 @@ p {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.guess-input {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 60%;
+}
+
+
+.feedback {
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.submit-btn {
+  background-color: #27ae60;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+

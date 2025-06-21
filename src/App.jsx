@@ -72,34 +72,82 @@ const flashcards = [
     category: "Hard"
   }
 ];
+const categoryColors = {
+  Easy: '#d4edda',
+  Medium: '#fff3cd',
+  Hard: '#f8d7da'
+};
 const App = () => {
   const [index, setIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [started, setStarted] = useState(false);
+  const [userGuess, setUserGuess] = useState('');
+  const [feedback, setFeedback] = useState('');
+  const [shuffledCards, setShuffledCards] = useState(flashcards);
+  const [currentStreak, setCurrentStreak] = useState(0);
+  const [longestStreak, setLongestStreak] = useState(0);
+  const [masteredCards, setMasteredCards] = useState([]);
 
-  const currentCard = flashcards[index];
 
-  const flipCard = () => {
-    setIsFlipped(!isFlipped);
-  };
+
+
+const cleanText = (text) => {
+  return text
+    .toLowerCase()
+    .trim();
+};
+
+  const currentCard = shuffledCards[index];
+
+  const flipCard = () => setIsFlipped(!isFlipped);
 
   const nextCard = () => {
-    if (index < flashcards.length - 1) {
-      setIndex(index + 1);
-    } else {
-      setIndex(0);
-    }
+    if (index < shuffledCards.length - 1) {
+    setIndex(index + 1);
     setIsFlipped(false);
+    setUserGuess("");
+    setFeedback("");
+    }
   };
 
  const prevCard = () => {
   if (index > 0) {
-    setIndex(index - 1);
-  } else {
-    setIndex(flashcards.length - 1); 
-  }
+  setIndex(index - 1);
   setIsFlipped(false);
+  setUserGuess("");
+  setFeedback("");
+  }
 };
+const shuffleCards = () => {
+  const newOrder = [...shuffledCards];
+  for (let i = newOrder.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newOrder[i], newOrder[j]] = [newOrder[j], newOrder[i]];
+  }
+  setShuffledCards(newOrder);
+  setIndex(0);
+  setIsFlipped(false);
+  setUserGuess('');
+  setFeedback('');
+};
+const markAsMastered = () => {
+  const updatedCards = [...shuffledCards];
+  const masteredCard = updatedCards.splice(index, 1)[0];
+
+  setMasteredCards([...masteredCards, masteredCard]);
+  setShuffledCards(updatedCards);
+
+  if (updatedCards.length === 0) {
+    setIndex(0);
+  } else if (index >= updatedCards.length) {
+    setIndex(updatedCards.length - 1);
+  }
+
+  setIsFlipped(false);
+  setUserGuess('');
+  setFeedback('');
+};
+
 
   if (!started) {
     return (
@@ -114,12 +162,46 @@ const App = () => {
       <h1>⚽ Soccer Trivia</h1>
       <p>Flip the card to test your soccer knowledge!</p>
       <p>Card {index + 1} of {flashcards.length}</p>
+      <p>🔥 Current Streak: {currentStreak} | 🏆 Longest Streak: {longestStreak}</p>
 
-     <div className={`flip-card ${currentCard.category}`} onClick={flipCard}>
+      <div
+        className={`flip-card ${currentCard.category.toLowerCase()}`}
+        onClick={flipCard}
+      >
         <div className={`flip-card-inner ${isFlipped ? 'flipped' : ''}`}>
           <div className="flip-card-front">
             {currentCard.image && <img src={currentCard.image} alt="Hint" className="card-img" />}
             <p>{currentCard.question}</p>
+            {!isFlipped && (
+              <div className ="guess-form">
+                <input 
+                type = "text"
+                value = {userGuess}
+                onChange={(e) => setUserGuess(e.target.value)}
+                placeholder="Enter your guess"
+                className="guess-input"
+                />
+                <button 
+             onClick={() => {
+              const guess = cleanText(userGuess);
+              const correct = cleanText(currentCard.answer);
+              if (guess.includes(correct) || correct.includes(guess)) {
+                setFeedback("✅ Correct!");
+                setIsFlipped(true);
+                const newStreak = currentStreak + 1;
+                setCurrentStreak(newStreak);
+                if (newStreak > longestStreak) {
+                  setLongestStreak(newStreak);
+                }
+              } else {
+                setFeedback("❌ Incorrect, try again!");
+                setCurrentStreak(0);
+              }
+            }}
+            className="submit-btn">Submit</button>
+            <p className ="feedback"> {feedback} </p>
+            </div>
+            )}
           </div>
           <div className="flip-card-back">
             <p>{currentCard.answer}</p>
@@ -128,8 +210,10 @@ const App = () => {
       </div>
 
       <div className="nav-buttons">
-        <button onClick={prevCard}>← Previous</button>
-        <button onClick={nextCard}>Next →</button>
+        <button onClick={prevCard} disabled = {index ==0}>← Previous</button>
+        <button onClick={nextCard} disabled = {index == shuffledCards.length - 1}>Next →</button>
+        <button onClick={shuffleCards}>🔀 Shuffle</button>
+        <button onClick={markAsMastered} className="master-btn">✅ Mark as Mastered </button>
       </div>
     </div>
   );
