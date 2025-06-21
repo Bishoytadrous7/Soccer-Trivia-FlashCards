@@ -161,12 +161,14 @@ const markAsMastered = () => {
     <div className="App">
       <h1>⚽ Soccer Trivia</h1>
       <p>Flip the card to test your soccer knowledge!</p>
-      <p>Card {index + 1} of {flashcards.length}</p>
+      <p>Card {index + 1} of {shuffledCards.length}</p>
       <p>🔥 Current Streak: {currentStreak} | 🏆 Longest Streak: {longestStreak}</p>
 
       <div
         className={`flip-card ${currentCard.category.toLowerCase()}`}
-        onClick={flipCard}
+        onClick={() => {
+        if (isFlipped) flipCard(); // Only allow manual unflip
+        }}
       >
         <div className={`flip-card-inner ${isFlipped ? 'flipped' : ''}`}>
           <div className="flip-card-front">
