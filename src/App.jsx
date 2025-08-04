@@ -73,9 +73,9 @@ const flashcards = [
   }
 ];
 const categoryColors = {
-  Easy: '#d4edda',
-  Medium: '#fff3cd',
-  Hard: '#f8d7da'
+  Easy: '#fbfbfbff',
+  Medium: '#74c774ff',
+  Hard: '#3f7935ff'
 };
 const App = () => {
   const [index, setIndex] = useState(0);
@@ -87,9 +87,6 @@ const App = () => {
   const [currentStreak, setCurrentStreak] = useState(0);
   const [longestStreak, setLongestStreak] = useState(0);
   const [masteredCards, setMasteredCards] = useState([]);
-
-
-
 
 const cleanText = (text) => {
   return text
@@ -163,15 +160,20 @@ const markAsMastered = () => {
       <p>Flip the card to test your soccer knowledge!</p>
       <p>Card {index + 1} of {shuffledCards.length}</p>
       <p>🔥 Current Streak: {currentStreak} | 🏆 Longest Streak: {longestStreak}</p>
-
+      <p className="category-label" style={{ color: categoryColors[currentCard.category] }}>
+        Difficulty: {currentCard.category}
+      </p>
       <div
         className={`flip-card ${currentCard.category.toLowerCase()}`}
         onClick={() => {
-        if (isFlipped) flipCard(); // Only allow manual unflip
+        if (isFlipped) flipCard(); 
         }}
+
       >
         <div className={`flip-card-inner ${isFlipped ? 'flipped' : ''}`}>
-          <div className="flip-card-front">
+          <div className="flip-card-front"
+            style={{ backgroundColor: categoryColors[currentCard.category] }}>
+            
             {currentCard.image && <img src={currentCard.image} alt="Hint" className="card-img" />}
             <p>{currentCard.question}</p>
             {!isFlipped && (
@@ -205,7 +207,7 @@ const markAsMastered = () => {
             </div>
             )}
           </div>
-          <div className="flip-card-back">
+          <div className="flip-card-back" >
             <p>{currentCard.answer}</p>
           </div>
         </div>
