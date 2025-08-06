@@ -1,5 +1,4 @@
-![React](https://img.shields.io/badge/react-%2361DAFB.svg) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-
+![React](https://img.shields.io/badge/react-%2361DAFB.svg) ![JavaScript](https://img.shields.io/badge/javascript-%23F7DF1E.svg?logo=javascript&logoColor=black)
 
 # ⚽ Soccer Trivia Flashcards
 
