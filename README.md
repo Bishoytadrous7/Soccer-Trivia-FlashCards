@@ -1,4 +1,5 @@
-![React](https://img.shields.io/badge/react-%2361DAFB.svg)
+![React](https://img.shields.io/badge/react-%2361DAFB.svg) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+
 
 # ⚽ Soccer Trivia Flashcards
 
@@ -36,6 +37,6 @@ An interactive web app that quizzes users on soccer knowledge using flashcards. 
 ## 🙋‍♂️ About Me 
 
 I'm a Computer Science student passionate about web development, soccer, and creating engaging web apps.
-Check out more of my work at [https://github.com/Bishoytadrous7](https://github.com/Bishoytadrous7)
+Check out more of my work at: [https://github.com/Bishoytadrous7](https://github.com/Bishoytadrous7)
 
 
