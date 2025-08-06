@@ -27,9 +27,8 @@ An interactive web app that quizzes users on soccer knowledge using flashcards. 
 ## 🛠️ Built With
 
 - **React** 
-- **JavaScript (ES6)**
+- **JavaScript**
 - **HTML & CSS**
-- **Git & GitHub** 
 
 ---
 
