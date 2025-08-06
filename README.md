@@ -42,6 +42,8 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+## Demo
+
 ![Video Walkthrough](https://i.imgur.com/ESbnPk6.gif)
 <!-- Replace this with whatever GIF tool you used! -->
 GIF created with Kap  
