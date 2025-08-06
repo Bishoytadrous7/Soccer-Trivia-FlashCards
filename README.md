@@ -9,6 +9,7 @@ An interactive web app that quizzes users on soccer knowledge using flashcards. 
 ## Demo
 
 ![Demo](src/assets/SoccerFlashcards.gif)
+🔗 [View Full GIF](https://i.imgur.com/qLipWmU.gif)
 
 ---
 
@@ -35,6 +36,6 @@ An interactive web app that quizzes users on soccer knowledge using flashcards. 
 ## 🙋‍♂️ About Me 
 
 I'm a Computer Science student passionate about web development, soccer, and creating engaging web apps.
-Check out more of my work at: [https://github.com/Bishoytadrous7](https://github.com/Bishoytadrous7)
+🔗 Check out more of my work at: [https://github.com/Bishoytadrous7](https://github.com/Bishoytadrous7)
 
 
